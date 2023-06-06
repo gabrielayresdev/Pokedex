@@ -1,0 +1,18 @@
+.tipos {
+  font-weight: 500;
+
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+
+  padding: 100px 0;
+  border-right: 1px solid #ddd;
+}
+
+.tipo {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+
+  cursor: pointer;
+}

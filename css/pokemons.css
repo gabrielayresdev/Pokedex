@@ -1,0 +1,89 @@
+.pokemons {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-content: space-between;
+  gap: 30px;
+
+  padding: 100px 0;
+}
+
+.total-de-pokemons {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+  font-weight: 700;
+
+  margin-bottom: 50px;
+}
+
+.total-de-pokemons::before {
+  content: "";
+  display: block;
+  width: 20px;
+  height: 20px;
+  background: url("../img/types/icon-all.svg") no-repeat;
+  margin-right: 10px;
+
+  filter: invert(17%) sepia(99%) saturate(6387%) hue-rotate(358deg)
+    brightness(105%) contrast(111%);
+}
+
+.pokemon {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  padding: 20px;
+  height: 300px;
+  min-width: 270px;
+  max-width: 280px;
+
+  border: 1px solid #ddd;
+  box-shadow: rgba(183, 189, 193, 0.3) 0px 10px 51px -5px;
+  border-radius: 12px;
+
+  cursor: pointer;
+  transition: 0.5s ease;
+}
+
+.pokemon:hover {
+  transform: translateY(-10px);
+}
+
+.pokemon--img {
+  width: 75%;
+  border-radius: 50%;
+  overflow: hidden;
+  background-color: #d6ebdc;
+  padding: 20px;
+
+  align-self: center;
+}
+
+.pokemon--img img {
+  width: 100%;
+  object-fit: cover;
+}
+
+.pokemon--numero {
+  font-size: 13px;
+  color: #7a7d80;
+  font-weight: 500;
+}
+
+.pokemon--numero::before {
+  content: "#";
+}
+
+.pokemon span {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.pokemon--nome {
+  font-size: 18px;
+  font-weight: 600;
+  color: #2f3133;
+}

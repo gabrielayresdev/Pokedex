@@ -1,0 +1,120 @@
+header {
+  background-color: #eff3f6;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.header-superior {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+
+  position: relative;
+  height: 70%;
+  padding-top: 20px;
+
+  background-image: url("../img/bg-red.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+
+  color: #fff;
+}
+
+.header-superior span {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.github-link {
+  color: #fff;
+  font-weight: 500;
+  font-size: 0.875rem;
+
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.icone-mochila {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+
+  background-color: #eff3f6;
+  color: #c20001;
+  border-radius: 30px;
+  padding: 5px;
+
+  font-weight: 500;
+}
+
+.icone-mochila span {
+  padding: 5px;
+  border-radius: 50%;
+  background-color: #f6d8d8;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.header-titulo {
+  font-size: 4rem;
+}
+
+.header-texto {
+  font-size: 1.125rem;
+  font-weight: 500;
+}
+
+.header-inferior {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  height: 30vh;
+}
+
+.header-inferior h2 {
+  font-size: 2rem;
+  max-width: 10ch;
+  font-weight: 700;
+}
+
+.pokebola {
+  position: absolute;
+  top: -200px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  pointer-events: none;
+}
+
+.header-busca {
+  background-color: #ffffff;
+  border-radius: 30px;
+  padding: 1rem;
+
+  min-width: 400px;
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.header-busca input {
+  flex: 1;
+
+  font-size: 1.05rem;
+  color: #535b61;
+}
+
+.header-busca input::placeholder {
+  color: #a0afba;
+}

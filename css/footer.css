@@ -1,0 +1,17 @@
+footer {
+  height: 10rem;
+  background-color: #368df0;
+  color: #fff;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+footer i {
+  color: #fa5757;
+}
+
+footer a {
+  padding: 15px 0;
+}

@@ -1,0 +1,7 @@
+main {
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  gap: 2rem;
+
+  font-weight: 400;
+}
