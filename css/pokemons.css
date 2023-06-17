@@ -1,14 +1,16 @@
+.content {
+  padding: 100px 0 40px;
+  display: flex;
+  flex-direction: column;
+}
 .pokemons {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   justify-content: space-between;
   gap: 30px;
-
-  padding: 100px 0;
 }
 
 .total-de-pokemons {
-  grid-column: 1 / -1;
   display: flex;
   align-items: center;
   font-size: 18px;
@@ -86,4 +88,31 @@
   font-size: 18px;
   font-weight: 600;
   color: #2f3133;
+}
+
+.loadBtn {
+  align-self: center;
+
+  background-color: rgba(63, 93, 179, 0.1);
+  color: #3f5db3;
+  font-weight: 600;
+  font-size: 14px;
+  padding: 14px 28px;
+  border-radius: 6px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 50px;
+
+  border: none;
+  outline: none;
+
+  cursor: pointer;
+  transition: all 0.5s;
+}
+
+.loadBtn:hover {
+  background-color: #3f5db3;
+  color: #ffffff;
 }
