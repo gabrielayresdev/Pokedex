@@ -1,0 +1,177 @@
+.modal-container {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.modal {
+  width: 50vw;
+  height: 70vh;
+
+  align-self: center;
+  margin: 0 auto;
+
+  position: relative;
+}
+
+.fechar {
+  position: absolute;
+  top: -50px;
+  right: 0;
+
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.3);
+
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.modal .modal-content {
+  display: flex;
+  gap: 4rem;
+  height: 100%;
+  width: 100%;
+  background-color: #fff;
+
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.modal-image {
+  width: 200px;
+  position: relative;
+  background: url("../img/temp/grass.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  display: flex;
+}
+
+.modal-image img {
+  align-self: center;
+  width: 100%;
+  margin-left: 10px;
+}
+
+.modal-data {
+  margin: 2rem 0;
+  flex: 1;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.modal-data span {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.modal-name {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.modal-number {
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: #ddd;
+  align-self: flex-end;
+}
+
+.modal-number::before {
+  content: "#";
+}
+
+.modal-type {
+  background-color: rgba(114, 184, 97, 0.1);
+  color: #73b861;
+
+  padding: 5px 10px;
+  border-radius: 5px;
+
+  width: 5rem;
+  text-align: center;
+}
+
+.modal-caracteristicas {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 1fr 1fr;
+  gap: 0.8rem;
+  align-self: flex-start;
+}
+
+.modal-caracteristicas dt {
+  grid-row: 1;
+  color: #aaa;
+  font-size: 0.8rem;
+}
+
+.modal-caracteristicas dd {
+  grid-row: 2;
+  font-weight: bold;
+  font-size: 0.875rem;
+}
+
+.weakness-title,
+.stats-title {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #000;
+  margin-bottom: 1rem;
+}
+
+.weakness-flexbox {
+  max-width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: 10px;
+  margin-right: 4rem;
+}
+
+.stats-title {
+  grid-column: 1/-1;
+}
+
+.stats-head {
+  font-size: 0.875rem;
+  color: #aaa;
+  font-weight: 300;
+}
+
+.stats-bar--container {
+  /* background-color: #ddd; */
+  background: linear-gradient(to right, red 72%, #ddd 28%);
+  height: 3px;
+  width: 100%;
+  border-radius: 2px;
+
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.stats-bar--container span {
+  height: 100%;
+  width: 6px;
+  background-color: #fff;
+}
