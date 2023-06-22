@@ -122,9 +122,7 @@ Dom.prototype.criaModal = function (pokemon) {
         ${stats
           .map((item) => {
             return `<p class="stats-head">${item[0]}</p>
-            <div class="stats-bar--container" style="background: linear-gradient(to right, red ${
-              item[1]
-            }%, #ddd ${100 - item[1]}%);">
+            <div class="stats-bar--container" style="background: linear-gradient(to right, red ${item[1]}%, #ddd 0%);">
               <span></span><span></span><span></span><span></span>
             </div>`;
           })
