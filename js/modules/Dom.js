@@ -5,6 +5,7 @@ export function Dom(seletor) {
   this.element = document.querySelector(seletor);
 }
 
+/* Cria o card de pokémon e adiciona seus eventListener */
 Dom.prototype.criaCard = function (pokemon) {
   const card = document.createElement("div");
   card.classList.add("pokemon");
@@ -35,11 +36,16 @@ Dom.prototype.criaCard = function (pokemon) {
   this.element.appendChild(card);
 };
 
+/* Gera o modal do pokémon */
 Dom.prototype.criaModal = function (pokemon) {
   const section = document.createElement("section");
   section.classList.add("modal-container");
   section.dataset.modal = "container";
 
+  /* Dados mais importantes extraidos do JSON pokemon */
+  // nome, id, imagem, tipos, weakness, background,
+  // height, weight, ability, stats
+  /* ------------------------------------------------ */
   const name = pokemon.name;
   const id = pokemon.id;
   const img = pokemon.sprites.other.dream_world.front_default
@@ -49,28 +55,23 @@ Dom.prototype.criaModal = function (pokemon) {
     pokemon.types.length === 1
       ? [pokemon.types[0].type.name]
       : [pokemon.types[0].type.name, pokemon.types[1].type.name];
-
   const weakness = tipos.reduce((acumulador, tipo) => {
     const weak = types[`${tipo}`].weakness;
     return acumulador.concat(weak).filter((item, pos, arr) => {
       return arr.indexOf(item) === pos;
     });
   }, []);
-
   const bg = "../../img/" + types[`${pokemon.types[0].type.name}`].modalBg;
-
   const height = pokemon.height;
   const weight = pokemon.weight;
   const ability = pokemon.abilities[0].ability.name;
-
   const stats = [];
-
   pokemon.stats.forEach((stat, index) => {
     stats[index] = [stat.stat.name, stat.base_stat];
   });
+  /* ------------------------------------------------ */
 
-  console.log(stats);
-
+  /* Estrutura HTML do elemento modal */
   section.innerHTML = `
   <div class="modal">
     <button class="fechar" data-modal="fechar">
@@ -137,29 +138,25 @@ Dom.prototype.criaModal = function (pokemon) {
 
   const fechar = section.querySelector('[data-modal="fechar"]');
 
+  //Se o click ocorrer dentro do modal, o target será no máximo o próprio modal. Se o click ocorrer no botão de fechar, será capturado pelo fechar.contains(target)
   function deletaModal({ target }) {
-    if (target === section) {
+    if (target === section || fechar.contains(target)) {
       window.removeEventListener("click", deletaModal);
       section.parentNode.removeChild(section);
     }
   }
-
-  /* Eventos para fechar o modal */
-
-  /* Otimizar removendo evento no fechar */
-  fechar.addEventListener("click", () => {
-    window.removeEventListener("click", deletaModal);
-    section.parentNode.removeChild(section);
-  });
   window.addEventListener("click", deletaModal);
 
+  /* Atribuição do modal ao elemento pai */
   this.element.appendChild(section);
 };
 
+/* Gera [quantidade] cards */
 Dom.prototype.criaCardLoading = function (quantidade) {
   const card = document.createElement("div");
   card.classList.add("pokemon-loading");
 
+  /* Estrutura HTML do card de loading */
   card.innerHTML = `
       <div class="pokemon--img-loading loading-effect">
         <span class="img-loading"></span>
@@ -176,6 +173,7 @@ Dom.prototype.criaCardLoading = function (quantidade) {
   }
 };
 
+/* Deleta todos os cards de loading da página */
 Dom.prototype.deletaCardsLoading = function () {
   const cards = document.querySelectorAll(".pokemon-loading");
   cards.forEach((card) => {
