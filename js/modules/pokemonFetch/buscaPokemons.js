@@ -1,10 +1,10 @@
 import { $URL } from "../initPage.js";
 
 /* 
-Limit = numero de pokemons buscados
-offSet = numero de pokemons excluidos da busca
+limit = numero de pokemons buscados
+offset = numero de pokemons excluidos da busca
 
-retorna lista com (limit) pokémons a partir do (offset) pokémon
+Recebe limit e offset como parâmetros e retorna lista com [limit] pokémons a partir do [offset] pokémon
 */
 export default async function buscaPokemons(limit, offset) {
   //url deve conter ambos os parametros ou não deve ter nenhum
