@@ -73,65 +73,65 @@ Dom.prototype.criaModal = function (pokemon) {
 
   section.innerHTML = `
   <div class="modal">
-  <button class="fechar" data-modal="fechar">
-    <i class="fa-solid fa-xmark"></i>
-  </button>
-  <div class="modal-content">
-    <div class="modal-image" style="background-image: url('${bg}');">
-      <img src="${img}" alt="Foto do pokémon ${pokemon.name}" />
-    </div>
-    <div class="modal-data">
-      <span>
-        <h3 class="modal-name">${name}</h3>
-        <p class="modal-number">${formataNumero(id)}</p>
-      </span>
-      <span>
-      ${tipos
-        .map((tipo) => {
-          return `<p class="modal-type" style="background-color: ${
-            types[`${tipo}`].bgColor
-          }; color: ${types[`${tipo}`].color}">${tipo}</p>`;
-        })
-        .join("")}
-    
-      </span>
-      <dl class="modal-caracteristicas">
-        <dt>Height</dt>
-        <dd>${height}</dd>
-        <dt>Weight</dt>
-        <dd>${weight}</dd>
-        <dt>Abilities</dt>
-        <dd>${ability}</dd>
-      </dl>
-      <div>
-        <h3 class="weakness-title">Weakness</h3>
-        <div class="weakness-flexbox">
-          
-          ${weakness
-            .map((item) => {
-              const { bgColor, color } = types[`${item}`];
-
-              return `<p class="modal-type" style="background-color: ${bgColor}; color: ${color}">${item}</p>`;
-            })
-            .join("")}
-        </div>
+    <button class="fechar" data-modal="fechar">
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+    <div class="modal-content">
+      <div class="modal-image" style="background-image: url('${bg}');">
+        <img src="${img}" alt="Foto do pokémon ${pokemon.name}" />
       </div>
-
-      <div class="stats">
-        <h3 class="stats-title">Stats</h3>
-        ${stats
-          .map((item) => {
-            return `<p class="stats-head">${item[0]}</p>
-            <div class="stats-bar--container" style="background: linear-gradient(to right, red ${item[1]}%, #ddd 0%);">
-              <span></span><span></span><span></span><span></span>
-            </div>`;
+      <div class="modal-data">
+        <span>
+          <h3 class="modal-name">${name}</h3>
+          <p class="modal-number">${formataNumero(id)}</p>
+        </span>
+        <span>
+        ${tipos
+          .map((tipo) => {
+            return `<p class="modal-type" style="background-color: ${
+              types[`${tipo}`].bgColor
+            }; color: ${types[`${tipo}`].color}">${tipo}</p>`;
           })
           .join("")}
-        
+      
+        </span>
+        <dl class="modal-caracteristicas">
+          <dt>Height</dt>
+          <dd>${height}</dd>
+          <dt>Weight</dt>
+          <dd>${weight}</dd>
+          <dt>Abilities</dt>
+          <dd>${ability}</dd>
+        </dl>
+        <div>
+          <h3 class="weakness-title">Weakness</h3>
+          <div class="weakness-flexbox">
+            
+            ${weakness
+              .map((item) => {
+                const { bgColor, color } = types[`${item}`];
+
+                return `<p class="modal-type" style="background-color: ${bgColor}; color: ${color}">${item}</p>`;
+              })
+              .join("")}
+          </div>
+        </div>
+
+        <div class="stats">
+          <h3 class="stats-title">Stats</h3>
+          ${stats
+            .map((item) => {
+              return `<p class="stats-head">${item[0]}</p>
+              <div class="stats-bar--container" style="background: linear-gradient(to right, red ${item[1]}%, #ddd 0%);">
+                <span></span><span></span><span></span><span></span>
+              </div>`;
+            })
+            .join("")}
+          
+        </div>
       </div>
     </div>
   </div>
-</div>
 
   `;
 
@@ -154,6 +154,33 @@ Dom.prototype.criaModal = function (pokemon) {
   window.addEventListener("click", deletaModal);
 
   this.element.appendChild(section);
+};
+
+Dom.prototype.criaCardLoading = function (quantidade) {
+  const card = document.createElement("div");
+  card.classList.add("pokemon-loading");
+
+  card.innerHTML = `
+      <div class="pokemon--img-loading loading-effect">
+        <span class="img-loading"></span>
+      </div>
+      <span class="numero-loading loading-effect"></span>
+      <span class="loading-footer">
+        <span class="nome-loading loading-effect"></span>
+        <span class="tipo-loading loading-effect"></span>
+      </span>
+  `;
+
+  for (let i = 0; i < quantidade; i++) {
+    this.element.appendChild(card.cloneNode(true));
+  }
+};
+
+Dom.prototype.deletaCardsLoading = function () {
+  const cards = document.querySelectorAll(".pokemon-loading");
+  cards.forEach((card) => {
+    card.parentElement.removeChild(card);
+  });
 };
 
 export const dom = new Dom(".pokemons");

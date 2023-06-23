@@ -48,6 +48,7 @@ export let pokemonsNames = [];
 export let pokemons;
 
 export async function inicializaPag() {
+  dom.criaCardLoading(9);
   const { count, results } = await buscaPokemons(9, 0);
   pokemons = results;
 
@@ -56,7 +57,7 @@ export async function inicializaPag() {
   }`;
 
   const pokemonsDados = await buscarDadosPokemons(pokemons);
-
+  dom.deletaCardsLoading();
   pokemonsDados.forEach((dado) => {
     dom.criaCard(dado);
   });
