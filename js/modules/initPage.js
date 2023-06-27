@@ -15,7 +15,7 @@ export async function inicializaPag() {
   dom.criaCardLoading(9);
 
   /* Faz a requisição dos nomes dos pokémons. */
-  const { count, results } = await buscaPokemons(9, 0);
+  const { count, results } = await buscaPokemons(9, 0, "All");
 
   /* Altera o valor do total de pokémons encontrados na seção. */
   document.querySelector(".total-de-pokemons").innerText = `${count} Pokémon${

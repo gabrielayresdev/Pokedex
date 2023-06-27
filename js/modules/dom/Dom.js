@@ -10,9 +10,17 @@ Dom.prototype.criaCard = function (pokemon) {
   const card = document.createElement("div");
   card.classList.add("pokemon");
 
-  const img = pokemon.sprites.other.dream_world.front_default
+  /*   const img = pokemon.sprites.other.dream_world.front_default
     ? pokemon.sprites.other.dream_world.front_default
-    : pokemon.sprites.other["official-artwork"].front_default;
+    : pokemon.sprites.other["official-artwork"].front_default; */
+  const img = pokemon.sprites.other["official-artwork"].front_default
+    ? pokemon.sprites.other["official-artwork"].front_default
+    : pokemon.sprites.other.dream_world.front_default;
+
+  //garante que nenhum card sem imagem será criado
+  if (img === null) {
+    return null;
+  }
 
   card.innerHTML = `
          <div class="pokemon--img">
@@ -34,6 +42,14 @@ Dom.prototype.criaCard = function (pokemon) {
   });
 
   this.element.appendChild(card);
+};
+
+/* Deleta os cards de pokémon */
+Dom.prototype.deletaCardsPokemon = function () {
+  const cards = this.element.querySelectorAll(".pokemon");
+  cards.forEach((card) => {
+    card.parentElement.removeChild(card);
+  });
 };
 
 /* Gera o modal do pokémon */
@@ -175,7 +191,7 @@ Dom.prototype.criaCardLoading = function (quantidade) {
 
 /* Deleta todos os cards de loading da página */
 Dom.prototype.deletaCardsLoading = function () {
-  const cards = document.querySelectorAll(".pokemon-loading");
+  const cards = this.element.querySelectorAll(".pokemon-loading");
   cards.forEach((card) => {
     card.parentElement.removeChild(card);
   });

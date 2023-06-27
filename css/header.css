@@ -99,7 +99,9 @@ header {
 .header-busca {
   background-color: #ffffff;
   border-radius: 30px;
-  padding: 1rem;
+
+  padding: 0 10px;
+  overflow: hidden;
 
   min-width: 400px;
 
@@ -110,6 +112,8 @@ header {
 
 .header-busca input {
   flex: 1;
+
+  padding: 1rem;
 
   font-size: 1.05rem;
   color: #535b61;

@@ -5,6 +5,8 @@
   flex-direction: column;
   gap: 40px;
 
+  height: 100%;
+
   padding: 100px 40px 100px 0;
   border-right: 1px solid #ddd;
 }
@@ -15,4 +17,18 @@
   gap: 5px;
 
   cursor: pointer;
+}
+
+.type__icon {
+  filter: invert(13%) sepia(6%) saturate(12%) hue-rotate(332deg)
+    brightness(103%) contrast(83%);
+}
+
+[data-menu="active"] .type__icon {
+  filter: none;
+}
+
+.disabled {
+  pointer-events: none;
+  opacity: 0.5;
 }
