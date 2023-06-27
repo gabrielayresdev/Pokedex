@@ -1,4 +1,4 @@
-import { dom } from "./Dom.js";
+import { dom } from "./dom/Dom.js";
 import buscaPokemons from "./pokemonFetch/buscaPokemons.js";
 import buscarDadosPokemons from "./pokemonFetch/buscarDadosPokemons.js";
 
@@ -6,7 +6,7 @@ import buscarDadosPokemons from "./pokemonFetch/buscarDadosPokemons.js";
 export const $URL = "https://pokeapi.co/api/v2/pokemon";
 /* pokemonsNames => armazena o nome dos pokémons do tipo selecionado */
 export let pokemonsNames = [];
-/* pokemons => armazena os dados dos pokémons já exibidos */
+/* pokemons => armazena os nomes e a url da api referente aos pokémons já exibidos */
 export let pokemons;
 
 /* Inicializa a página procurando pelos dados de 9 pokémons e cria seus cards. Enquanto a requisição a Api não é resolvida, exibe 9 cards de loading no lugar dos cards de pokémons */
@@ -16,7 +16,6 @@ export async function inicializaPag() {
 
   /* Faz a requisição dos nomes dos pokémons. */
   const { count, results } = await buscaPokemons(9, 0);
-  pokemons = results;
 
   /* Altera o valor do total de pokémons encontrados na seção. */
   document.querySelector(".total-de-pokemons").innerText = `${count} Pokémon${
@@ -24,13 +23,13 @@ export async function inicializaPag() {
   }`;
 
   /* Faz a requisição dos dados dos pokémons. */
-  const pokemonsDados = await buscarDadosPokemons(pokemons);
+  const pokemonsData = await buscarDadosPokemons(results);
 
   /* Remove os cards de loading */
   dom.deletaCardsLoading();
 
   /* Cria os cards com os dados obtidos */
-  pokemonsDados.forEach((dado) => {
+  pokemonsData.forEach((dado) => {
     dom.criaCard(dado);
   });
 }

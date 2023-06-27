@@ -1,5 +1,5 @@
-import { formataNumero } from "./textFormat/textFormat.js";
-import { types } from "./typesEnum.js";
+import { formataNumero } from "../textFormat/textFormat.js";
+import { types } from "../enums/typesEnum.js";
 
 export function Dom(seletor) {
   this.element = document.querySelector(seletor);

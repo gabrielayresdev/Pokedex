@@ -58,10 +58,16 @@
   width: 75%;
   border-radius: 50%;
   overflow: hidden;
+
   background: #d6ebdc;
   padding: 20px;
+  aspect-ratio: 1/1;
 
   align-self: center;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .pokemon--img img {
@@ -167,10 +173,4 @@
   background: linear-gradient(-90deg, #a7a6a6, transparent, #bbb, #a7a6a6);
   background-size: 400%;
   animation: loading 2s linear infinite;
-}
-
-.img-loading {
-  display: block;
-  min-width: 178.5px;
-  min-height: 178.5px;
 }
