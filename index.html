@@ -34,7 +34,11 @@
           <img src="img/img-pokeball.png" alt="Imagem de uma pokebola" />
         </div>
         <div class="header-busca">
-          <input type="text" placeholder="Search for a number or it's name" />
+          <input
+            type="text"
+            data-search
+            placeholder="Search for a number or it's name"
+          />
           <i class="fa-solid fa-magnifying-glass"></i>
         </div>
       </div>
@@ -164,7 +168,8 @@
 
       <div class="content">
         <p class="total-de-pokemons">100 Pokémons</p>
-        <div class="pokemons"></div>
+        <div class="pokemons-search"></div>
+        <div class="pokemons active"></div>
         <button class="loadBtn">Load more pokémons</button>
       </div>
     </main>

@@ -9,13 +9,22 @@ export let pokemonsNames = [];
 /* pokemons => armazena os nomes e a url da api referente aos pokémons já exibidos */
 export let pokemons;
 
+const armazenaNomesDosPokemons = (lista) => {
+  const names = lista.map((item) => {
+    return { name: item.name };
+  });
+  return names;
+};
+
 /* Inicializa a página procurando pelos dados de 9 pokémons e cria seus cards. Enquanto a requisição a Api não é resolvida, exibe 9 cards de loading no lugar dos cards de pokémons */
 export async function inicializaPag() {
   /* Cria os cards de loading */
   dom.criaCardLoading(9);
 
   /* Faz a requisição dos nomes dos pokémons. */
-  const { count, results } = await buscaPokemons(9, 0, "All");
+  const { count, results } = await buscaPokemons(10000, 0, "All");
+
+  pokemonsNames = armazenaNomesDosPokemons(results);
 
   /* Altera o valor do total de pokémons encontrados na seção. */
   document.querySelector(".total-de-pokemons").innerText = `${count} Pokémon${
@@ -23,7 +32,7 @@ export async function inicializaPag() {
   }`;
 
   /* Faz a requisição dos dados dos pokémons. */
-  const pokemonsData = await buscarDadosPokemons(results);
+  const pokemonsData = await buscarDadosPokemons(results.slice(0, 9));
 
   /* Remove os cards de loading */
   dom.deletaCardsLoading();
