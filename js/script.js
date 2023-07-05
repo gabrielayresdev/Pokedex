@@ -1,7 +1,7 @@
-import { inicializaPag } from "./modules/initPage.js";
-import initLoadBtn from "./modules/initLoadBtn.js";
-import initTypeMenu from "./modules/initTypeMenu.js";
-import { initSearchPokemons } from "./modules/initSearchPokemons.js";
+import inicializaPag from "./modules/inicializaPagina.js";
+import initLoadBtn from "./modules/loadBtn.js";
+import initTypeMenu from "./modules/typeMenu.js";
+import initSearchPokemons from "./modules/searchPokemons.js";
 
 inicializaPag();
 initLoadBtn();

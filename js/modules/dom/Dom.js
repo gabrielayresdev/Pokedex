@@ -1,7 +1,7 @@
-import { formataNumero } from "../textFormat/textFormat.js";
+import { formataNome, formataNumero } from "../textFormat/textFormat.js";
 import { types } from "../enums/typesEnum.js";
 
-export class Dom {
+export default class Dom {
   constructor(seletor) {
     this.element = document.querySelector(seletor);
   }
@@ -11,12 +11,17 @@ export class Dom {
     const card = document.createElement("div");
     card.classList.add("pokemon");
 
+    //Prioriza a arte de pokemon dream world
     /*   const img = pokemon.sprites.other.dream_world.front_default
     ? pokemon.sprites.other.dream_world.front_default
     : pokemon.sprites.other["official-artwork"].front_default; */
+
+    //prioriza a arte oficial
     const img = pokemon.sprites.other["official-artwork"].front_default
       ? pokemon.sprites.other["official-artwork"].front_default
       : pokemon.sprites.other.dream_world.front_default;
+    const name = formataNome(pokemon.name);
+    const id = formataNumero(pokemon.id);
 
     //garante que nenhum card sem imagem será criado
     if (img === null) {
@@ -27,19 +32,19 @@ export class Dom {
          <div class="pokemon--img">
             <img
             src="${img}"
-            alt="Foto do ${pokemon.name}"
+            alt="Foto do ${name}"
             />
          </div>
-         <p class="pokemon--numero">${formataNumero(pokemon.id)}</p>
+         <p class="pokemon--numero">${id}</p>
          <span>
-            <p class="pokemon--nome">${pokemon.name}</p>
+            <p class="pokemon--nome">${name}</p>
             <img src="img/types/grass.svg" />
          </span>
   `;
 
+    //adiciona a funcionalidade de criar um modal ao clicar no card
     card.addEventListener("click", () => {
-      const body = new Dom("body");
-      body.criaModal(pokemon);
+      new Dom("body").criaModal(pokemon);
     });
 
     this.element.appendChild(card);
@@ -57,21 +62,19 @@ export class Dom {
   criaModal = function (pokemon) {
     const section = document.createElement("section");
     section.classList.add("modal-container");
-    section.dataset.modal = "container";
 
     /* Dados mais importantes extraidos do JSON pokemon */
     // nome, id, imagem, tipos, weakness, background,
     // height, weight, ability, stats
     /* ------------------------------------------------ */
-    const name = pokemon.name;
-    const id = pokemon.id;
+    const name = formataNome(pokemon.name);
     const img = pokemon.sprites.other.dream_world.front_default
       ? pokemon.sprites.other.dream_world.front_default
       : pokemon.sprites.other["official-artwork"].front_default;
-    const tipos =
-      pokemon.types.length === 1
-        ? [pokemon.types[0].type.name]
-        : [pokemon.types[0].type.name, pokemon.types[1].type.name];
+    console.log(pokemon.types);
+    const tipos = pokemon.types.map(({ type }) => type.name);
+
+    //garante que uma fraqueza não apareça duas vezes.
     const weakness = tipos.reduce((acumulador, tipo) => {
       const weak = types[`${tipo}`].weakness;
       return acumulador.concat(weak).filter((item, pos, arr) => {
@@ -79,8 +82,7 @@ export class Dom {
       });
     }, []);
     const bg = "../../img/" + types[`${pokemon.types[0].type.name}`].modalBg;
-    const height = pokemon.height;
-    const weight = pokemon.weight;
+    const { id, height, weight } = pokemon;
     const ability = pokemon.abilities[0].ability.name;
     const stats = [];
     pokemon.stats.forEach((stat, index) => {
@@ -96,7 +98,7 @@ export class Dom {
       </button>
       <div class="modal-content">
         <div class="modal-image" style="background-image: url('${bg}');">
-          <img src="${img}" alt="Foto do pokémon ${pokemon.name}" />
+          <img src="${img}" alt="Foto do pokémon ${name}" />
         </div>
         <div class="modal-data">
           <span>
@@ -156,12 +158,12 @@ export class Dom {
     const fechar = section.querySelector('[data-modal="fechar"]');
 
     //Se o click ocorrer dentro do modal, o target será no máximo o próprio modal. Se o click ocorrer no botão de fechar, será capturado pelo fechar.contains(target)
-    function deletaModal({ target }) {
+    const deletaModal = ({ target }) => {
       if (target === section || fechar.contains(target)) {
         window.removeEventListener("click", deletaModal);
         section.parentNode.removeChild(section);
       }
-    }
+    };
     window.addEventListener("click", deletaModal);
 
     /* Atribuição do modal ao elemento pai */
@@ -198,5 +200,3 @@ export class Dom {
     });
   };
 }
-
-export const dom = new Dom(".pokemons");

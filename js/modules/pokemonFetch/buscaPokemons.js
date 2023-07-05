@@ -1,5 +1,3 @@
-import { $URL } from "../initPage.js";
-
 /* 
 limit = numero de pokemons buscados
 offset = numero de pokemons excluidos da busca
@@ -13,13 +11,18 @@ export default async function buscaPokemons(limit, offset, type) {
   //url deve conter ambos os parametros ou não deve ter nenhum
   //https://pokeapi.co/api/v2/pokemon/?limit=9&offset=0
 
+  //path padrão para toda requisição de pokémons da Api
+  const path = "https://pokeapi.co/api/v2/pokemon";
+
   let url;
   if (type === "All") {
-    url = `${$URL}/${
+    //Se houver limit e offset, eles serão usados no endpoint. Caso não haja um dos dois, nenhum dos dois será usado como parâmetro.
+    const parametros =
       limit != undefined && offset != undefined
         ? `?limit=${limit}&offset=${offset}/`
-        : ""
-    }`;
+        : "";
+
+    url = `${path}/${parametros}`;
   } else {
     url = `https://pokeapi.co/api/v2/type/${type}`;
   }
@@ -28,7 +31,13 @@ export default async function buscaPokemons(limit, offset, type) {
     const response = await fetch(url);
     const json = await response.json();
 
-    /* Se certifica que o retorno segue o mesmo padrão independente do valor de type */
+    /* 
+    Se certifica que o retorno segue o mesmo padrão independente do valor de type ==>
+    {
+      count: retorna o número de pokémons retornados
+      results: retorna uma array com objetos {name, url}
+    }
+    */
     if (type === "All") {
       return json;
     } else {
@@ -39,10 +48,12 @@ export default async function buscaPokemons(limit, offset, type) {
         .map((item) => {
           return item.pokemon;
         });
-
       return retorno;
     }
   } catch (error) {
+    //ADICIONAR FEATURE
     console.error(`Could not get pokémons: ${error}`);
   }
 }
+
+//Parcialmente otimizado
