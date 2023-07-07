@@ -22,6 +22,7 @@ export default class Dom {
       : pokemon.sprites.other.dream_world.front_default;
     const name = formataNome(pokemon.name);
     const id = formataNumero(pokemon.id);
+    const tipos = pokemon.types.map(({ type }) => type.name);
 
     //garante que nenhum card sem imagem será criado
     if (img === null) {
@@ -38,7 +39,13 @@ export default class Dom {
          <p class="pokemon--numero">${id}</p>
          <span>
             <p class="pokemon--nome">${name}</p>
-            <img src="img/types/grass.svg" />
+            <span class="pokemon--tipos">
+              ${tipos
+                .map((tipo) => {
+                  return `<img src="img/types/${tipo}.svg" />`;
+                })
+                .join("")}
+            </span>
          </span>
   `;
 

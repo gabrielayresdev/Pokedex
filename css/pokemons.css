@@ -105,6 +105,16 @@
   color: #2f3133;
 }
 
+.pokemon--tipos {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.pokemon--tipos img {
+  height: 1.25rem;
+}
+
 .loadBtn {
   align-self: center;
 
