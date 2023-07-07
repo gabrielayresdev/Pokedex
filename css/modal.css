@@ -113,7 +113,7 @@
 .modal-caracteristicas {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: 1fr 1fr;
+  grid-template-rows: auto auto;
   gap: 0.8rem;
   align-self: flex-start;
 }
@@ -177,7 +177,7 @@
 .stats-bar--container span {
   height: 100%;
   width: 6px;
-  background-color: #fff;
+  background-color: #ddd;
 }
 
 @keyframes openModal {
@@ -188,5 +188,155 @@
   to {
     opacity: 1;
     left: 0;
+  }
+}
+
+@media only screen and (min-width: 1025px) and (max-width: 1440px) {
+  /* breakpoint para monitores pequenos */
+  .modal-image {
+    width: 20%;
+  }
+  .modal-data {
+    margin-top: 1rem;
+    margin-right: 1rem;
+  }
+
+  .modal .modal-content {
+    gap: 2rem;
+  }
+
+  .weakness-flexbox {
+    gap: 1rem;
+  }
+
+  .weakness-title,
+  .stats-title {
+    margin-bottom: 0.5rem;
+  }
+
+  .modal-type {
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 1024px) {
+  /* breakpoint para tablets */
+  .modal {
+    width: 100vw;
+    height: 90vh;
+    align-self: last baseline;
+  }
+
+  .fechar {
+    top: -40px;
+    box-shadow: none;
+    border-radius: 0;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+  }
+  .modal .modal-content {
+    flex-direction: column;
+    border-radius: 0;
+  }
+
+  .modal-image {
+    width: 100%;
+
+    justify-content: center;
+  }
+  .modal-image img {
+    width: 20%;
+
+    position: relative;
+    top: 3rem;
+  }
+
+  .modal-type {
+    width: 100%;
+    max-width: 274px;
+  }
+
+  .modal-data {
+    padding: 2rem;
+    margin: 0;
+
+    align-items: center;
+    justify-content: flex-start;
+    gap: 2rem;
+  }
+
+  .modal-data .modal-tipos {
+    width: 50%;
+    justify-content: center;
+  }
+
+  .modal-caracteristicas {
+    align-self: center;
+  }
+
+  .weakness {
+    width: 90%;
+  }
+
+  .modal-caracteristicas dt {
+    font-size: 1rem;
+  }
+
+  .modal-caracteristicas dd {
+    font-size: 1.125rem;
+  }
+
+  .weakness-title {
+    text-align: center;
+  }
+
+  .weakness-flexbox {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-content: center;
+  }
+
+  .stats {
+    width: 90%;
+    margin: 0;
+  }
+
+  .stats-bar--container {
+    height: 4px;
+  }
+}
+
+@media (max-width: 480px) {
+  /* breakpoint para celulares */
+
+  .modal .modal-content {
+    gap: 1.75rem;
+
+    overflow-y: scroll;
+  }
+
+  .modal-image img {
+    width: 25%;
+    min-width: 200px;
+
+    top: 1rem;
+  }
+
+  .modal-data {
+    padding: 1rem;
+  }
+
+  .modal-caracteristicas {
+    max-width: 90%;
+    gap: 0.5rem;
+  }
+
+  .modal-caracteristicas dt,
+  .modal-caracteristicas dd {
+    font-size: 1rem;
+  }
+
+  .stats-bar--container span {
+    opacity: 0;
   }
 }

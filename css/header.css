@@ -1,5 +1,5 @@
 header {
-  background-color: #eff3f6;
+  background-color: var(--bgcolor-contraste-claro);
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -9,18 +9,18 @@ header {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 2rem;
+  gap: 2.5rem;
 
   position: relative;
   height: 70%;
-  padding-top: 20px;
+  padding-top: 1.25rem;
 
   background-image: url("../img/bg-red.svg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
 
-  color: #fff;
+  color: var(--white);
 }
 
 .header-superior span {
@@ -30,13 +30,11 @@ header {
 }
 
 .github-link {
-  color: #fff;
-  font-weight: 500;
-  font-size: 0.875rem;
-
   display: flex;
   align-items: center;
   gap: 5px;
+
+  color: var(--white);
 }
 
 .icone-mochila {
@@ -44,12 +42,12 @@ header {
   align-items: center;
   gap: 5px;
 
-  background-color: #eff3f6;
-  color: #c20001;
-  border-radius: 30px;
+  background-color: var(--bgcolor-contraste-claro);
+  border-radius: 2rem;
   padding: 5px;
 
   font-weight: 500;
+  color: #c20001;
 }
 
 .icone-mochila span {
@@ -62,58 +60,59 @@ header {
   justify-content: center;
 }
 
-.header-titulo {
-  font-size: 4rem;
-}
-
-.header-texto {
-  font-size: 1.125rem;
-  font-weight: 500;
-}
-
 .header-inferior {
-  position: relative;
-
   display: flex;
   align-items: center;
   justify-content: space-between;
 
-  height: 30vh;
+  position: relative;
+
+  height: 30%;
 }
 
 .header-inferior h2 {
-  font-size: 2rem;
-  max-width: 10ch;
-  font-weight: 700;
+  max-width: 11ch;
 }
 
 .pokebola {
   position: absolute;
-  top: -200px;
+  top: -18vh;
   left: 50%;
   transform: translateX(-50%);
+
+  width: 26vw;
+  /* 550px é o mínimo para que a sombra não desapareça */
+  min-width: 550px;
+  height: 47vh;
 
   pointer-events: none;
 }
 
+.pokebola img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
 .header-busca {
-  background-color: #ffffff;
-  border-radius: 30px;
-
-  padding: 0 10px;
-  overflow: hidden;
-
-  min-width: 400px;
-
   display: flex;
   align-items: center;
   gap: 10px;
+
+  border-radius: 30px;
+  background-color: var(--white);
+
+  min-width: 30%;
+  padding: 0 1.5rem;
+
+  overflow: hidden;
 }
 
 .header-busca input {
   flex: 1;
 
-  padding: 1rem;
+  padding: 1rem 0;
 
   font-size: 1.05rem;
   color: #535b61;
@@ -121,4 +120,67 @@ header {
 
 .header-busca input::placeholder {
   color: #a0afba;
+}
+
+@media (max-width: 1024px) {
+  /* breakpoint para tablets */
+  header {
+    min-height: 850px;
+  }
+
+  .header-superior {
+    gap: 3.5rem;
+    text-align: center;
+    padding: 1.25rem 0.5rem;
+  }
+  .header-inferior {
+    flex-direction: column;
+    justify-content: end;
+    gap: 1.725rem;
+
+    padding-bottom: 2rem;
+  }
+
+  .header-inferior h2 {
+    max-width: none;
+  }
+
+  .header-busca {
+    min-width: 80%;
+  }
+}
+
+@media (max-width: 480px) {
+  /* breakpoint para celulares */
+  .header-superior {
+    gap: 2.5rem;
+  }
+
+  .header-inferior {
+    flex-direction: column;
+    justify-content: end;
+    gap: 1rem;
+
+    padding-bottom: 1rem;
+  }
+
+  .header-busca {
+    min-width: 100%;
+  }
+
+  .header-inferior h2 {
+    max-width: 11ch;
+    text-align: center;
+  }
+
+  .header-busca input {
+    font-size: 0.95rem;
+  }
+
+  .pokebola {
+    min-width: 0;
+    min-height: 60vh;
+    width: 100vw;
+    top: -28vh;
+  }
 }

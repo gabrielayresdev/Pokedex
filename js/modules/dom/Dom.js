@@ -105,7 +105,7 @@ export default class Dom {
             <h3 class="modal-name">${name}</h3>
             <p class="modal-number">${formataNumero(id)}</p>
           </span>
-          <span>
+          <span class="modal-tipos">
           ${tipos
             .map((tipo) => {
               return `<p class="modal-type" style="background-color: ${
@@ -123,7 +123,7 @@ export default class Dom {
             <dt>Abilities</dt>
             <dd>${ability}</dd>
           </dl>
-          <div>
+          <div class="weakness">
             <h3 class="weakness-title">Weakness</h3>
             <div class="weakness-flexbox">
               

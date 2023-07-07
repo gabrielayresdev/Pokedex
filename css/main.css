@@ -5,3 +5,11 @@ main {
 
   font-weight: 400;
 }
+
+@media (max-width: 1024px) {
+  /* breakpoint para tablets */
+  main {
+    display: flex;
+    flex-direction: column;
+  }
+}

@@ -6,6 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pokedex</title>
     <link rel="stylesheet" href="css/style.css" />
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="img/icons/icons8-snorlax-96.png"
+    />
 
     <!-- Font Awesome Icons -->
     <script
@@ -18,18 +23,18 @@
       <div class="header-superior">
         <span class="container">
           <img src="img/logo.svg" alt="Logo da marca Pokémon" class="logo" />
-          <a href="https://github.com/INeonysI" class="github-link"
+          <a href="https://github.com/INeonysI" class="textSmall github-link"
             ><i class="fa-brands fa-github"></i>Gabriel Ayres</a
           >
         </span>
         <div class="icone-mochila"><span>🎒</span>Pokedex</div>
-        <h1 class="header-titulo">Who is that pokemon?</h1>
-        <p class="header-texto">
+        <h1 class="textHuge">Who is that pokemon?</h1>
+        <p class="textMedium">
           The perfect guide for those who want to hunt Pokémons around the world
         </p>
       </div>
       <div class="header-inferior container">
-        <h2>Select your pokemon</h2>
+        <h2 class="textBig">Select your pokemon</h2>
         <div class="pokebola">
           <img src="img/img-pokeball.png" alt="Imagem de uma pokebola" />
         </div>
@@ -44,8 +49,15 @@
       </div>
     </header>
     <main class="container">
-      <nav>
-        <ul class="tipos">
+      <nav class="tipo-container">
+        <div data-dropdown="header">
+          <p>
+            Show:
+            <span class="font-medium" data-dropdown-selected>All</span>
+          </p>
+          <i class="fa-solid fa-caret-down"></i>
+        </div>
+        <ul class="tipos" data-dropdown="options">
           <li class="tipo" data-type="All" data-menu="active">
             <!-- sem alt pra não causar poluição sonora para o leito -->
             <img src="img/types/icon-all.svg" class="type__icon" />

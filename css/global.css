@@ -4,6 +4,13 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+
+  /* border: 1px solid blue; */
+}
+
+:root {
+  --white: #fff;
+  --bgcolor-contraste-claro: #eff3f6;
 }
 
 body {
@@ -26,13 +33,104 @@ input {
   border: none;
 }
 
-/* img {
-  display: block;
-  width: 100%;
-}
- */
 .container {
   width: 70vw;
   margin-left: auto;
   margin-right: auto;
+}
+
+/* Possiveis classes gerais */
+
+.textSmall {
+  font-weight: 500;
+  font-size: 0.875rem;
+}
+
+.textMedium {
+  font-size: 1.125rem;
+  font-weight: 500;
+}
+
+.textBig {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.textHuge {
+  font-size: 4rem;
+}
+
+.cursorPointer {
+  cursor: pointer;
+}
+
+.backgroundCentralizado {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.textWhite {
+  color: #fff;
+}
+
+/*  */
+
+@media (max-width: 1440px) {
+  /* media query das classes gerais */
+  .container {
+    width: 80vw;
+  }
+}
+
+@media (max-width: 1024px) {
+  /* breakpoint para tablets */
+  .textSmall {
+    font-size: 1rem;
+  }
+  .textMedium {
+    font-size: 1.4rem;
+  }
+
+  .textBig {
+    font-size: 2.5rem;
+  }
+
+  .textHuge {
+    font-size: 4.5rem;
+  }
+
+  .container {
+    width: 80vw;
+  }
+
+  .font-bold {
+    font-weight: 700;
+  }
+
+  .font-medium {
+    font-weight: 500;
+  }
+}
+
+@media (max-width: 480px) {
+  /* breakpoint para celulares */
+  .textSmall {
+    font-size: 0.8rem;
+  }
+  .textMedium {
+    font-size: 1rem;
+  }
+
+  .textBig {
+    font-size: 1.725rem;
+  }
+
+  .textHuge {
+    font-size: 3rem;
+  }
+
+  .container {
+    width: 90vw;
+  }
 }

@@ -6,7 +6,8 @@
 .pokemons,
 .pokemons-search {
   display: none;
-  grid-template-columns: repeat(3, 1fr);
+  /* grid-template-columns: repeat(3, 1fr); */
+  grid-template-columns: repeat(auto-fit, minmax(184px, 30%));
   justify-content: space-between;
   gap: 30px;
 }
@@ -43,8 +44,8 @@
   justify-content: space-between;
 
   padding: 20px;
-  height: 300px;
-  width: 280px;
+  width: 100%;
+  aspect-ratio: 14/15;
 
   border: 1px solid #ddd;
   box-shadow: rgba(183, 189, 193, 0.3) 0px 10px 51px -5px;
@@ -100,6 +101,7 @@
 .pokemon--nome {
   font-size: 18px;
   font-weight: 600;
+  text-transform: capitalize;
   color: #2f3133;
 }
 
@@ -178,4 +180,26 @@
   background: linear-gradient(-90deg, #a7a6a6, transparent, #bbb, #a7a6a6);
   background-size: 400%;
   animation: loading 2s linear infinite;
+}
+
+@media (max-width: 1440px) {
+  /* breakpoint para monitores pequenos */
+  .pokemons,
+  .pokemons-search {
+    grid-template-columns: repeat(2, 2fr);
+  }
+}
+
+@media (max-width: 1024px) {
+  .content {
+    padding-top: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  /* breakpoint para celulares */
+  .pokemons,
+  .pokemons-search {
+    grid-template-columns: 1fr;
+  }
 }

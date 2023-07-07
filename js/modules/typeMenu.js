@@ -28,6 +28,9 @@ export default function initTypeMenu() {
 
     /* Altera o valor do total de pokémons encontrados na seção. */
     atualizaTotal(count);
+    /* Atualiza o valor do header do dropdown nas versões mobile e tablet */
+    const dropdownHeader = document.querySelector("[data-dropdown-selected]");
+    dropdownHeader.innerText = type;
 
     //deleta os cards de loading e gera os cards dos pokémons
     dom.deletaCardsLoading();
