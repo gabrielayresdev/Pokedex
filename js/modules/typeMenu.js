@@ -3,6 +3,7 @@ import buscaPokemons from "./pokemonFetch/buscaPokemons.js";
 import buscarDadosPokemons from "./pokemonFetch/buscarDadosPokemons.js";
 import toggleBtnsDisabled from "./dom/toggleBtnsDisabled.js";
 import atualizaTotal from "./dom/alteraTotal.js";
+import { types } from "./enums/typesEnum.js";
 
 export default function initTypeMenu() {
   const typesBtn = document.querySelectorAll(".tipo");
@@ -18,6 +19,8 @@ export default function initTypeMenu() {
     //remove o data-menu="active" do tipo selecionado originalmente
     const selected = document.querySelector("[data-menu=active]");
     delete selected.dataset.menu;
+    //remove a cor do tipo selecionado originalmente
+    selected.style.color = "#000";
     //adiciona o data-menu="active" ao tipo selecionado
     this.dataset.menu = "active";
 
@@ -31,6 +34,8 @@ export default function initTypeMenu() {
     /* Atualiza o valor do header do dropdown nas versões mobile e tablet */
     const dropdownHeader = document.querySelector("[data-dropdown-selected]");
     dropdownHeader.innerText = type;
+    /* Atualiza a cor do texto do tipo selecionado para as versões desktop. */
+    if (window.screen.width > 1024) this.style.color = types[type].color;
 
     //deleta os cards de loading e gera os cards dos pokémons
     dom.deletaCardsLoading();

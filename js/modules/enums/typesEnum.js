@@ -1,5 +1,9 @@
 /* Objeto com os paths para os icones e background, hexadecimal das cores de texto, rgb das cores de fundo e array com as fraquezas de cada tipo  */
 export const types = {
+  All: {
+    icon: "types/icon-all.svg",
+    color: "#000000",
+  },
   bug: {
     icon: "types/bug.svg",
     modalBg: "modalBg/bug_bg.svg",
