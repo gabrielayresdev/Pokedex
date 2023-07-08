@@ -1,15 +1,21 @@
 import Dom from "./dom/Dom.js";
 
 /* pokemonsNames => armazena o nome dos pokémons do tipo selecionado */
-export let pokemonsNames = [];
+let pokemonsNames = [];
 export function setPokemonsNames(value) {
   pokemonsNames = value;
 }
+export function getPokemonsNames() {
+  return pokemonsNames;
+}
 
 // filtrados => armazena os nomes que foram testados pelo regex da busca
-export let filtrados = [];
+let filtrados = [];
 export function setFiltrados(value) {
   filtrados = value;
+}
+export function getFiltrados() {
+  return filtrados;
 }
 
 // Objeto que irá manipular a seção responsável por exibir os pokémons

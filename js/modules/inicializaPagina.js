@@ -5,9 +5,7 @@ import buscarDadosPokemons from "./pokemonFetch/buscarDadosPokemons.js";
 import { dom, loadTotal, setPokemonsNames } from "./variaveisGlobais.js";
 
 const getNomesDosPokemons = (lista) => {
-  const names = lista.map((item) => {
-    return { name: item.name };
-  });
+  const names = lista.map(({ name }) => ({ name }));
   return names;
 };
 
@@ -15,13 +13,13 @@ const getNomesDosPokemons = (lista) => {
 export default async function inicializaPag() {
   /* Cria os cards de loading */
   dom.criaCardLoading(loadTotal);
-  //Impede que mais pokemons sejam carregados ou que o tipo exibido seja trocado enquanto os cards requisitados não forem carregado
+  // Impede que mais pokemons sejam carregados ou que o tipo exibido seja trocado enquanto os cards requisitados não forem carregado
   toggleBtnsDisabled();
 
   /* Faz a requisição dos nomes dos pokémons. */
   const { count, results } = await buscaPokemons(10000, 0, "All");
 
-  //Guarda na variável pokemonNames todos os nomes de pokémons da Api
+  // Guarda na variável pokemonNames todos os nomes de pokémons da Api
   setPokemonsNames(getNomesDosPokemons(results));
 
   /* Altera o valor do total de pokémons encontrados na seção. */
@@ -32,7 +30,7 @@ export default async function inicializaPag() {
 
   /* Remove os cards de loading */
   dom.deletaCardsLoading();
-  //permite novamente que mais pokemons sejam carregados ou que o tipo exibido seja trocado
+  // Permite novamente que mais pokemons sejam carregados ou que o tipo exibido seja trocado
   toggleBtnsDisabled();
 
   /* Cria os cards com os dados obtidos */

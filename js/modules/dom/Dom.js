@@ -1,5 +1,5 @@
 import { formataNome, formataNumero } from "../textFormat/textFormat.js";
-import { types } from "../enums/typesEnum.js";
+import types from "../enums/typesEnum.js";
 
 export default class Dom {
   constructor(seletor) {
@@ -7,16 +7,16 @@ export default class Dom {
   }
 
   /* Cria o card de pokémon e adiciona seus eventListener */
-  criaCard = function (pokemon) {
+  criaCard(pokemon) {
     const card = document.createElement("div");
     card.classList.add("pokemon");
 
-    //Prioriza a arte de pokemon dream world
+    // Prioriza a arte de pokemon dream world
     /*   const img = pokemon.sprites.other.dream_world.front_default
     ? pokemon.sprites.other.dream_world.front_default
     : pokemon.sprites.other["official-artwork"].front_default; */
 
-    //prioriza a arte oficial
+    // prioriza a arte oficial
     const img = pokemon.sprites.other["official-artwork"].front_default
       ? pokemon.sprites.other["official-artwork"].front_default
       : pokemon.sprites.other.dream_world.front_default;
@@ -24,7 +24,7 @@ export default class Dom {
     const id = formataNumero(pokemon.id);
     const tipos = pokemon.types.map(({ type }) => type.name);
 
-    //garante que nenhum card sem imagem será criado
+    // Garante que nenhum card sem imagem será criado
     if (img === null) {
       return null;
     }
@@ -41,32 +41,31 @@ export default class Dom {
             <p class="pokemon--nome">${name}</p>
             <span class="pokemon--tipos">
               ${tipos
-                .map((tipo) => {
-                  return `<img src="img/types/${tipo}.svg" />`;
-                })
+                .map((tipo) => `<img src="img/types/${tipo}.svg" />`)
                 .join("")}
             </span>
          </span>
   `;
 
-    //adiciona a funcionalidade de criar um modal ao clicar no card
+    // Adiciona a funcionalidade de criar um modal ao clicar no card
     card.addEventListener("click", () => {
       new Dom("body").criaModal(pokemon);
     });
 
     this.element.appendChild(card);
-  };
+    return card;
+  }
 
   /* Deleta os cards de pokémon */
-  deletaCardsPokemon = function () {
+  deletaCardsPokemon() {
     const cards = this.element.querySelectorAll(".pokemon");
     cards.forEach((card) => {
       card.parentElement.removeChild(card);
     });
-  };
+  }
 
   /* Gera o modal do pokémon */
-  criaModal = function (pokemon) {
+  criaModal(pokemon) {
     const section = document.createElement("section");
     section.classList.add("modal-container");
 
@@ -78,17 +77,16 @@ export default class Dom {
     const img = pokemon.sprites.other.dream_world.front_default
       ? pokemon.sprites.other.dream_world.front_default
       : pokemon.sprites.other["official-artwork"].front_default;
-    console.log(pokemon.types);
     const tipos = pokemon.types.map(({ type }) => type.name);
 
-    //garante que uma fraqueza não apareça duas vezes.
+    // Garante que uma fraqueza não apareça duas vezes.
     const weakness = tipos.reduce((acumulador, tipo) => {
       const weak = types[`${tipo}`].weakness;
-      return acumulador.concat(weak).filter((item, pos, arr) => {
-        return arr.indexOf(item) === pos;
-      });
+      return acumulador
+        .concat(weak)
+        .filter((item, pos, arr) => arr.indexOf(item) === pos);
     }, []);
-    const bg = "../../img/" + types[`${pokemon.types[0].type.name}`].modalBg;
+    const bg = `../../img/${types[pokemon.types[0].type.name].modalBg}`;
     const { id, height, weight } = pokemon;
     const ability = pokemon.abilities[0].ability.name;
     const stats = [];
@@ -114,11 +112,12 @@ export default class Dom {
           </span>
           <span class="modal-tipos">
           ${tipos
-            .map((tipo) => {
-              return `<p class="modal-type" style="background-color: ${
-                types[`${tipo}`].bgColor
-              }; color: ${types[`${tipo}`].color}">${tipo}</p>`;
-            })
+            .map(
+              (tipo) =>
+                `<p class="modal-type" style="background-color: ${
+                  types[`${tipo}`].bgColor
+                }; color: ${types[`${tipo}`].color}">${tipo}</p>`
+            )
             .join("")}
         
           </span>
@@ -147,12 +146,13 @@ export default class Dom {
           <div class="stats">
             <h3 class="stats-title">Stats</h3>
             ${stats
-              .map((item) => {
-                return `<p class="stats-head">${item[0]}</p>
+              .map(
+                (item) =>
+                  `<p class="stats-head">${item[0]}</p>
                 <div class="stats-bar--container" style="background: linear-gradient(to right, red ${item[1]}%, #ddd 0%);">
                   <span></span><span></span><span></span><span></span>
-                </div>`;
-              })
+                </div>`
+              )
               .join("")}
             
           </div>
@@ -164,7 +164,7 @@ export default class Dom {
 
     const fechar = section.querySelector('[data-modal="fechar"]');
 
-    //Se o click ocorrer dentro do modal, o target será no máximo o próprio modal. Se o click ocorrer no botão de fechar, será capturado pelo fechar.contains(target)
+    // Se o click ocorrer dentro do modal, o target será no máximo o próprio modal. Se o click ocorrer no botão de fechar, será capturado pelo fechar.contains(target)
     const deletaModal = ({ target }) => {
       if (target === section || fechar.contains(target)) {
         window.removeEventListener("click", deletaModal);
@@ -175,10 +175,10 @@ export default class Dom {
 
     /* Atribuição do modal ao elemento pai */
     this.element.appendChild(section);
-  };
+  }
 
   /* Gera [quantidade] cards */
-  criaCardLoading = function (quantidade) {
+  criaCardLoading(quantidade) {
     const card = document.createElement("div");
     card.classList.add("pokemon-loading");
 
@@ -197,13 +197,13 @@ export default class Dom {
     for (let i = 0; i < quantidade; i++) {
       this.element.appendChild(card.cloneNode(true));
     }
-  };
+  }
 
   /* Deleta todos os cards de loading da página */
-  deletaCardsLoading = function () {
+  deletaCardsLoading() {
     const cards = this.element.querySelectorAll(".pokemon-loading");
     cards.forEach((card) => {
       card.parentElement.removeChild(card);
     });
-  };
+  }
 }

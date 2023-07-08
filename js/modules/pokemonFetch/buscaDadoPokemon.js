@@ -10,9 +10,10 @@ export default async function buscaDadoPokemon(name) {
 
     return json;
   } catch (error) {
-    //ADICIONAR FEATURE
+    // ADICIONAR FEATURE
     console.error(`Could not get pokémons: ${error}/`);
+    return error;
   }
 }
 
-//Parcialmente otimizado
+// Parcialmente otimizado

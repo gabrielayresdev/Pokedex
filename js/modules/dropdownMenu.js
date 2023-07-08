@@ -7,7 +7,6 @@ export default function initDropdownMenu() {
 
     const fechaNav = ({ target }) => {
       const nav = document.querySelector(".tipo-container");
-      console.log(nav.contains(target));
       if (!nav.contains(target)) {
         tiposBtns.classList.remove("active");
         window.removeEventListener("click", fechaNav);

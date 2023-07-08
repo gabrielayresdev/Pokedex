@@ -1,4 +1,4 @@
-//Ativa e desativa os botões de type e de carregar mais pokémons
+// Ativa e desativa os botões de type e de carregar mais pokémons
 export default function toggleBtnsDisabled() {
   const typesBtn = document.querySelectorAll(".tipo");
   const loadBtn = document.querySelector(".loadBtn");
