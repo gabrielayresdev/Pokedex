@@ -4,7 +4,7 @@
 
 A Pokedex é uma aplicação web interativa que fornece informações abrangentes sobre diferentes Pokémon. O projeto é uma iniciativa que visa fornecer aos fãs de Pokémon uma ferramenta prática e informativa para explorar o vasto universo dos Pokémon. Com uma interface fácil de usar, os usuários podem pesquisar Pokémons por nome ou número, explorar uma lista completa de Pokémon disponíveis e obter detalhes sobre suas estatísticas, habilidades e fraquezas. O projéto é responsivo para todos os dispositivos mobile, tablet e desktop.
 
-Caso queira utilizar o site, entre em https://pokedex-neonys.netlify.app
+Caso queira utilizar o site, entre em https://pokedex-zeta-neon.vercel.app
 
 ## Responsividade
 
@@ -55,4 +55,4 @@ As principais funcionalidades são:
 
 - Repositório: https://github.com/INeonysI/Pokedex
   - Caso encontre algum bug e deseje reportar, favor, enviar email para gabriel.ar.fort@gmail.com.
-- Deploy: https://pokedex-neonys.netlify.app
+- Deploy: https://pokedex-zeta-neon.vercel.app
