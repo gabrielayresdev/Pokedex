@@ -53,6 +53,6 @@ As principais funcionalidades são:
 
 ## Links
 
-- Repositório: https://github.com/INeonysI/Pokedex
+- Repositório: https://github.com/gabrielayresdev/Pokedex
   - Caso encontre algum bug e deseje reportar, favor, enviar email para gabriel.ar.fort@gmail.com.
 - Deploy: https://pokedex-zeta-neon.vercel.app
